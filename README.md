@@ -1,6 +1,12 @@
 # ANRESF · Fluxograma e Macro de Casos
 
-Site estático em HTML para acompanhar o fluxograma e a visão macro dos casos ANRESF.
+Site estático em HTML para acompanhar o fluxograma, a visão macro dos casos ANRESF e os painéis operacionais da Unidade Técnica.
+
+## Painéis disponíveis
+
+- **Fluxograma**: acompanhamento por caso, ramificações, histórico e resumo operacional.
+- **Macro**: KPIs consolidados, status dos casos, tempo por caso e distribuição por origem/status.
+- **Painéis Operacionais da Unidade Técnica**: Mesa UT, Prazos Críticos, Dossiê do Clube, Esteira Processual, Sanções/Risco Regulatório e Gargalos.
 
 ## Publicação no Vercel
 
