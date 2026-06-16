@@ -11,7 +11,7 @@ Site estático em HTML para acompanhar o fluxograma e a visão macro dos casos A
 
 ## Atualização da base
 
-Quando houver alteração na planilha base, envie os dados colados em formato tabular/TSV com o cabeçalho `Caso`, `ID`, `Etapa`, `Origem`, `Clube`, `Série`, `Ordem Etapa`, `Objeto`, `Data de envio`, `Prazo final`, `Data de entrega`, `Observação`, `Status Etapa`, `Status Caso`, `Sanção`, `Doc`, `Email responsável`, `Alertas enviados`, `Último alerta enviado em`, `ID Evento Agenda`, `Evento criado em`, `Turma` e `Data da decisão`. A atualização principal fica no array `DATA` dentro de `index.html`.
+Quando houver alteração na planilha base, envie os dados colados em formato tabular/TSV com o cabeçalho `Caso`, `ID`, `Etapa`, `Origem`, `Clube`, `Série`, `Ordem Etapa`, `Objeto`, `Data de envio`, `Prazo final`, `Data de entrega`, `Observação`, `Status Etapa`, `Status Caso`, `Sanção`, `Doc`, `Turma` e `Data da decisão`. As colunas `Email responsável`, `Alertas enviados`, `Último alerta enviado em`, `ID Evento Agenda` e `Evento criado em` podem vir na planilha, mas são ignoradas no site porque não são necessárias para a apresentação. A atualização principal fica no array `DATA` dentro de `index.html`.
 
 ## Senha de acesso
 
