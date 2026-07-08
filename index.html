@@ -59,7 +59,7 @@
     </div>
   </nav>
   <main class="main">
-    <div class="topbar"><div class="topbar-title" id="panelTitle">Fluxograma unificado de casos</div><div class="base-pill">Base: Prazos ANRESF(3).xlsx</div><div class="topbar-date" id="todayDate"></div></div>
+    <div class="topbar"><div class="topbar-title" id="panelTitle">Fluxograma unificado de casos</div><div class="base-pill">Base: Prazos ANRESF(3).xlsx · Atualizado em 08/07/2026</div><div class="topbar-date" id="todayDate"></div></div>
     <div class="toolbar" id="toolbarFlow">
       <span class="label">Caso</span><select id="caseSelect" onchange="renderFlow()"></select>
       <span class="label">Status</span><select id="statusSelect" onchange="renderFlow()"><option value="">Todos</option></select>
@@ -97,10 +97,10 @@
         <div class="kanban" id="kanbanBoard"></div>
       </div>
       <div class="panel" id="panel-sancoes">
-        <div class="hero"><div><div class="pill red">Risco regulatório</div><h1>Painel de Sanções e Risco Regulatório</h1><p>Classificação textual de advertências, multas, exclusões PARF-B e risco de nova infração.</p></div></div>
+        <div class="hero"><div><div class="pill red">Risco regulatório</div><h1>Painel de Sanções e Risco Regulatório</h1><p>Classificação textual de advertências, multas, exclusões PARF-B, decisões sem sanção e risco de nova infração.</p></div><label><span class="label">Turma/Presidência</span><select id="sanctionTurmaFilter" onchange="renderSancoes()"><option value="">Todas</option></select></label></div>
         <div class="kpis" id="riskKpis"></div>
         <div class="quick-filter-note" id="riskQuickFilter"></div>
-        <div class="risk-grid"><div class="card"><div class="card-head"><h2>Sanções por clube</h2></div><div class="card-body" id="riskByClub"></div></div><div class="card"><div class="card-head"><h2>Sanções por origem</h2></div><div class="card-body" id="riskByOrigin"></div></div><div class="card"><div class="card-head"><h2>Sanções por série</h2></div><div class="card-body" id="riskBySerie"></div></div></div>
+        <div class="risk-grid"><div class="card"><div class="card-head"><h2>Sanções por clube</h2></div><div class="card-body" id="riskByClub"></div></div><div class="card"><div class="card-head"><h2>Sanções por origem</h2></div><div class="card-body" id="riskByOrigin"></div></div><div class="card"><div class="card-head"><h2>Sanções por série</h2></div><div class="card-body" id="riskBySerie"></div></div><div class="card"><div class="card-head"><h2>Sanções por Turma/Presidência</h2></div><div class="card-body" id="riskByTurma"></div></div></div>
       </div>
       <div class="panel" id="panel-ids">
         <div class="hero"><div><div class="pill gold">Controle de IDs</div><h1>Últimos IDs utilizados</h1><p>Consulta rápida do último ID por tipo de documento e sugestão do próximo número.</p></div><button class="btn dark" onclick="window.print()">Imprimir/PDF</button></div>
@@ -1070,9 +1070,9 @@ const DATA = [
     "objeto": "Avaliaçao do Pedido de reconsideração do Acórdão 009/2026",
     "dataEnvio": "12/06/2026",
     "prazoFinal": "19/06/2026",
-    "dataEntrega": "",
+    "dataEntrega": "07/07/2026",
     "observacao": "",
-    "statusEtapa": "Pendente ANRESF",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
     "sancao": "",
     "doc": "",
@@ -1661,7 +1661,7 @@ const DATA = [
     "casoRaiz": "17",
     "id": "001/2026",
     "semId": false,
-    "etapa": "Decisão da Presidência - PSS",
+    "etapa": "Acórdão Decisão da Presidência - PSS",
     "origem": "Solvência 2026/02/28",
     "clube": "Athletico PR",
     "serie": "A",
@@ -1671,10 +1671,10 @@ const DATA = [
     "dataEnvio": "08/06/2026",
     "prazoFinal": "08/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando decisão",
-    "statusEtapa": "Pendente ANRESF",
+    "observacao": "Presidência - Decidido assegurar prazo de defesa de 10 dias úteis",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
-    "sancao": "",
+    "sancao": "Sem sanção",
     "doc": "",
     "turma": "Presidência",
     "dataDecisao": ""
@@ -1707,7 +1707,7 @@ const DATA = [
     "row": 68,
     "caso": "18",
     "casoRaiz": "18",
-    "id": "003/2026",
+    "id": "005/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -1779,7 +1779,7 @@ const DATA = [
     "row": 71,
     "caso": "19",
     "casoRaiz": "19",
-    "id": "004/2026",
+    "id": "006/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -1851,7 +1851,7 @@ const DATA = [
     "row": 74,
     "caso": "20",
     "casoRaiz": "20",
-    "id": "005/2026",
+    "id": "007/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -1923,7 +1923,7 @@ const DATA = [
     "row": 77,
     "caso": "21",
     "casoRaiz": "21",
-    "id": "006/2026",
+    "id": "008/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -1995,7 +1995,7 @@ const DATA = [
     "row": 80,
     "caso": "22",
     "casoRaiz": "22",
-    "id": "007/2026",
+    "id": "009/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -2069,7 +2069,7 @@ const DATA = [
     "casoRaiz": "23",
     "id": "002/2026",
     "semId": false,
-    "etapa": "Decisão da Presidência - PSS",
+    "etapa": "Acórdão Decisão da Presidência - PSS",
     "origem": "Solvência 2026/02/28",
     "clube": "Internacional",
     "serie": "A",
@@ -2079,10 +2079,10 @@ const DATA = [
     "dataEnvio": "08/06/2026",
     "prazoFinal": "08/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando decisão",
-    "statusEtapa": "Pendente ANRESF",
+    "observacao": "Presidência - Decidido assegurar prazo de defesa de 10 dias úteis",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
-    "sancao": "",
+    "sancao": "Sem sanção",
     "doc": "",
     "turma": "Presidência",
     "dataDecisao": ""
@@ -2117,7 +2117,7 @@ const DATA = [
     "casoRaiz": "24",
     "id": "003/2026",
     "semId": false,
-    "etapa": "Decisão da Presidência - PSS",
+    "etapa": "Acórdão Decisão da Presidência - PSS",
     "origem": "Solvência 2026/02/28",
     "clube": "Palmeiras",
     "serie": "A",
@@ -2127,10 +2127,10 @@ const DATA = [
     "dataEnvio": "08/06/2026",
     "prazoFinal": "08/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando decisão",
-    "statusEtapa": "Pendente ANRESF",
+    "observacao": "Presidência - Decidido assegurar prazo de defesa de 10 dias úteis",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
-    "sancao": "",
+    "sancao": "Sem sanção",
     "doc": "",
     "turma": "Presidência",
     "dataDecisao": ""
@@ -2163,7 +2163,7 @@ const DATA = [
     "row": 87,
     "caso": "25",
     "casoRaiz": "25",
-    "id": "008/2026",
+    "id": "010/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -2237,7 +2237,7 @@ const DATA = [
     "casoRaiz": "26",
     "id": "004/2026",
     "semId": false,
-    "etapa": "Decisão da Presidência - PSS",
+    "etapa": "Acórdão Decisão da Presidência - PSS",
     "origem": "Solvência 2026/02/28",
     "clube": "Santos",
     "serie": "A",
@@ -2247,10 +2247,10 @@ const DATA = [
     "dataEnvio": "08/06/2026",
     "prazoFinal": "08/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando decisão",
-    "statusEtapa": "Pendente ANRESF",
+    "observacao": "Presidência - Decidido assegurar prazo de defesa de 10 dias úteis",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
-    "sancao": "",
+    "sancao": "Sem sanção",
     "doc": "",
     "turma": "Presidência",
     "dataDecisao": ""
@@ -2283,7 +2283,7 @@ const DATA = [
     "row": 92,
     "caso": "27",
     "casoRaiz": "27",
-    "id": "009/2026",
+    "id": "011/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -2355,7 +2355,7 @@ const DATA = [
     "row": 95,
     "caso": "28",
     "casoRaiz": "28",
-    "id": "010/2026",
+    "id": "012/2026",
     "semId": false,
     "etapa": "Parecer Técnico Conclusivo",
     "origem": "Solvência 2026/02/28",
@@ -2508,11 +2508,11 @@ const DATA = [
     "ordem": 1,
     "ordemLabel": "1",
     "objeto": "Descumprimento do Requisito de Solvência (Pré 2026)",
-    "dataEnvio": "22/06/2026",
-    "prazoFinal": "06/07/2026",
+    "dataEnvio": "23/06/2026",
+    "prazoFinal": "07/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando defesa do Clube",
-    "statusEtapa": "Pendente Clube",
+    "observacao": "Não apresentou defesa",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
     "sancao": "Advertência",
     "doc": "https://drive.google.com/file/d/1xRfkB41Qh3ibs_lDZ2jH8jyhHR3homts/view?usp=drive_link",
@@ -2583,8 +2583,8 @@ const DATA = [
     "dataEnvio": "22/06/2026",
     "prazoFinal": "06/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando defesa do Clube",
-    "statusEtapa": "Pendente Clube",
+    "observacao": "Não apresentou defesa",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
     "sancao": "Advertência + Não regularização acarretará nova Infração",
     "doc": "https://drive.google.com/file/d/1q0RDfj7AJ-5d5hK9k2jbBawYPh8fdV5N/view?usp=drive_link",
@@ -2631,8 +2631,8 @@ const DATA = [
     "dataEnvio": "22/06/2026",
     "prazoFinal": "06/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando defesa do Clube",
-    "statusEtapa": "Pendente Clube",
+    "observacao": "Não apresentou defesa",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
     "sancao": "Advertência + Exclusão PARF-B",
     "doc": "https://drive.google.com/file/d/1x_CCYvmXgvOEQ3YOBB8ninhW0Kt9Ggj1/view?usp=drive_link",
@@ -2703,8 +2703,8 @@ const DATA = [
     "dataEnvio": "23/06/2026",
     "prazoFinal": "07/07/2026",
     "dataEntrega": "",
-    "observacao": "Aguardando defesa do Clube",
-    "statusEtapa": "Pendente Clube",
+    "observacao": "O Clube apresentou defesa",
+    "statusEtapa": "Finalizado",
     "statusCaso": "Em andamento",
     "sancao": "Advertência + (i) Exclusão PARF-B + (ii) Exclusão PARF-B + (iii) Não regularização acarretará nova Infração",
     "doc": "https://drive.google.com/file/d/10wfHuXfmJv2SURZyJIoazbFO-U8n21_g/view?usp=drive_link",
@@ -2715,9 +2715,9 @@ const DATA = [
     "row": 110,
     "caso": "42",
     "casoRaiz": "42",
-    "id": "",
-    "semId": true,
-    "etapa": "Parecer Técnico",
+    "id": "003/2026",
+    "semId": false,
+    "etapa": "Parecer Técnico Conclusivo",
     "origem": "Denúncia 2026",
     "clube": "Náutico",
     "serie": "B",
@@ -2787,9 +2787,9 @@ const DATA = [
     "row": 113,
     "caso": "43",
     "casoRaiz": "43",
-    "id": "",
-    "semId": true,
-    "etapa": "Parecer Técnico",
+    "id": "004/2026",
+    "semId": false,
+    "etapa": "Parecer Técnico Conclusivo",
     "origem": "Denúncia 2026",
     "clube": "Sport Recife",
     "serie": "B",
@@ -2837,7 +2837,7 @@ const DATA = [
     "casoRaiz": "44",
     "id": "",
     "semId": true,
-    "etapa": "Parecer Técnico",
+    "etapa": "Parecer Técnico Conclusivo",
     "origem": "Denúncia 2026",
     "clube": "América MG",
     "serie": "B",
@@ -2927,7 +2927,7 @@ function populateSelectors(){ const cases=Object.entries(groupCases()).sort(case
 function renderFlow(){ const all=allRowsForSelectedCase(); const rows=selectedRows(); const meta=caseMeta(all); const currentSet=currentRows(all); const pend=all.filter(r=>!String(r.statusEtapa||'').toLowerCase().includes('finalizado')); $('heroBadges').innerHTML=`${origemPill(meta.origem)} ${seriePill(meta.serie)}`; $('heroTitle').textContent=`Caso ${meta.raiz} · ${meta.clube}`; $('heroSub').textContent=`${all.length} etapa(s) no total · ${new Set(all.map(r=>r.caso)).size} ramificação(ões) · ${all.filter(r=>r.observacao).length} registro(s) com observação`; $('flowCount').textContent=`${rows.length} etapa(s) exibida(s)`; $('sideCaso').textContent=`Caso ${meta.raiz}`; const finalizadas=all.filter(r=>String(r.statusEtapa).toLowerCase().includes('finalizado')).length; renderKpi('caseKpis', [{value:all.length,label:'Etapas',sub:'No caso unificado',color:'var(--text)'},{value:finalizadas,label:'Finalizadas',sub: all.length ? `${Math.round(finalizadas/all.length*100)}% do caso` : '—',color:'var(--green)'},{value:all.filter(r=>responsavel(r.statusEtapa)==='Clube').length,label:'Pend. Clube',sub:'Aguardando manifestação',color:'var(--orange)'},{value:all.filter(r=>responsavel(r.statusEtapa)==='ANRESF').length,label:'Pend. ANRESF',sub:'Ação interna',color:'var(--blue)'},{value:all.filter(r=>r.observacao).length,label:'Observações',sub:'Registros detalhados',color:'var(--purple)'},{value:new Set(all.map(r=>r.caso)).size,label:'Ramificações',sub:'Principal/subprocesso',color:'var(--gold)'}]); const byBranch=Object.entries(groupBy(rows, r=>r.caso)).sort((a,b)=>parseFloat(a[0])-parseFloat(b[0])); $('flowContainer').innerHTML=rows.length?byBranch.map(([branch,items])=>`<div class="lane"><div class="lane-title">${esc(branch.includes('.') ? `Subprocesso / PSS · Caso ${branch}` : `Fluxo principal · Caso ${branch}`)} <span class="pill">${items.length} etapa(s)</span></div><div class="flow">${items.sort(stageSort).map((r,i)=>{ const idLabel=r.id||`Caso ${r.caso}`; const doc=r.doc?`<a class="doc-link" target="_blank" rel="noopener" href="${esc(r.doc)}">Ver documento</a>`:'<span class="muted">—</span>'; return `<div class="step ${stepClass(r)} ${currentSet.has(r.row)?'current':''}"><div class="step-top"><span class="step-id" title="${esc(idLabel)}">${esc(idLabel)}</span>${statusPill(r.statusEtapa)}</div><div class="step-title">${esc(r.etapa || 'Etapa sem nome')}</div><div class="step-text">${esc(r.objeto || 'Sem objeto informado')}</div><div class="meta"><div class="meta-item"><label>Envio</label><span>${esc(r.dataEnvio || '—')}</span></div><div class="meta-item"><label>Prazo</label><span>${esc(r.prazoFinal || '—')}</span></div><div class="meta-item"><label>Entrega</label><span>${esc(r.dataEntrega || '—')}</span></div><div class="meta-item"><label>Doc</label><span>${doc}</span></div></div>${r.observacao?`<div class="note"><strong>Observação:</strong><br>${esc(r.observacao)}</div>`:''}${r.sancao?`<div class="sancao"><strong>Sanção:</strong><br>${esc(r.sancao)}</div>`:''}</div>${i<items.length-1?'<div class="arrow">→</div>':''}`;}).join('')}</div></div>`).join(''):'<div class="empty"><div>📭</div><p>Nenhuma etapa encontrada para os filtros atuais.</p></div>'; const inicio=minDate(all.map(r=>parseDateBR(r.dataEnvio))); const prazo=maxDate(all.map(r=>parseDateBR(r.prazoFinal))); const tempo=diffDays(inicio,prazo); $('sideSummary').innerHTML=[['Status do caso',statusCaso(all)],['Etapa atual',currentStepText(all)],['Responsável atual',pend.length ? responsavel(pend.sort(stageSort)[0].statusEtapa) : 'Sem pendência'],['Tempo do caso',tempo==null?'Sem datas suficientes':`${tempo} dia(s)`],['Data de envio inicial',inicio?inicio.toLocaleDateString('pt-BR'):'—'],['Prazo final máximo',prazo?prazo.toLocaleDateString('pt-BR'):'—'],['Sanções preenchidas',all.filter(r=>r.sancao).length]].map(([l,v])=>`<div class="side-item"><label>${esc(l)}</label><div>${esc(v)}</div></div>`).join(''); renderHistory(rows); }
 function currentStepText(rows){ const pend=rows.filter(r=>!String(r.statusEtapa||'').toLowerCase().includes('finalizado')).sort(stageSort); const cur=pend[0] || [...rows].sort(stageSort).at(-1); return cur ? `${cur.etapa} · Caso ${cur.caso}` : '—'; }
 function renderHistory(rows){ $('histCount').textContent=rows.length?`${rows.length} linha(s)`:'—'; $('histTable').innerHTML=rows.length?`<thead><tr><th>Caso</th><th>ID</th><th>Etapa</th><th>Objeto</th><th>Envio</th><th>Prazo</th><th>Status</th><th>Observação</th><th>Sanção</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.caso)}</td><td>${r.id?esc(r.id):'<span class="muted">—</span>'}</td><td><strong>${esc(r.etapa)}</strong></td><td>${esc(r.objeto)}</td><td>${esc(r.dataEnvio||'—')}</td><td>${esc(r.prazoFinal||'—')}</td><td>${statusPill(r.statusEtapa)}</td><td>${esc(r.observacao||'—')}</td><td>${r.sancao?esc(r.sancao):'<span class="muted">—</span>'}</td></tr>`).join('')}</tbody>`:'<tr><td><div class="empty"><div>📭</div><p>Nenhum histórico para os filtros atuais.</p></div></td></tr>'; }
-function clearFilters(){ if($('statusSelect')) $('statusSelect').value=''; if($('searchInput')) $('searchInput').value=''; if($('idsSearch')) $('idsSearch').value=''; filtroMacroAtivo=''; filtroDossieAtivo=''; dossieCasoAberto=''; resetEsteiraFilters(); renderFlow(); if($('kanbanBoard')) renderEsteira(); if($('caseTimes')) renderMacro(); if($('clubTimeline')) renderDossie(); if($('idsTable')) renderControleIds(); }
+function clearFilters(){ if($('statusSelect')) $('statusSelect').value=''; if($('searchInput')) $('searchInput').value=''; if($('idsSearch')) $('idsSearch').value=''; if($('sanctionTurmaFilter')) $('sanctionTurmaFilter').value=''; filtroSancoesAtivo=''; filtroMacroAtivo=''; filtroDossieAtivo=''; dossieCasoAberto=''; resetEsteiraFilters(); renderFlow(); if($('kanbanBoard')) renderEsteira(); if($('caseTimes')) renderMacro(); if($('clubTimeline')) renderDossie(); if($('idsTable')) renderControleIds(); if($('riskKpis')) renderSancoes(); }
 function prevCase(){ const s=$('caseSelect'); s.selectedIndex=Math.max(0,s.selectedIndex-1); renderFlow(); }
 function nextCase(){ const s=$('caseSelect'); s.selectedIndex=Math.min(s.options.length-1,s.selectedIndex+1); renderFlow(); }
 function copyResumo(){ const all=allRowsForSelectedCase(); const meta=caseMeta(all); const pend=all.filter(r=>!String(r.statusEtapa||'').toLowerCase().includes('finalizado')); const text=[`Caso ${meta.raiz} - ${meta.clube} - ${meta.origem}`, `${all.length} etapas; ${all.filter(r=>r.sancao).length} com sanção preenchida.`, pend.length ? `Pendências: ${pend.map(r => r.etapa + ' (' + r.statusEtapa + ')').join('; ')}` : 'Sem pendências.'].join('\n'); navigator.clipboard?.writeText(text); alert('Resumo copiado.'); }
@@ -2999,13 +2999,13 @@ function renderFluxoCasoHtml(rows){ const byBranch=Object.entries(groupBy([...ro
 function toggleFluxoDossie(root){ dossieCasoAberto=dossieCasoAberto===root?'':root; renderDossie(); }
 function dossieCaseCard(c){ const prazo=c.prazoDate?c.prazoDate.toLocaleDateString('pt-BR'):'—'; const ids=c.ids.join(', ')||'Sem ID'; const aberto=dossieCasoAberto===c.root; return `<div class="timeline-item ${c.statusDossie==='Finalizado'?'finalizado':'pendente-anresf'}"><div onclick="toggleFluxoDossie('${esc(c.root)}')" style="cursor:pointer"><strong>Caso ${esc(c.root)} · ${esc(c.clube)}</strong><p class="muted">${esc(ids)} · ${esc(c.origem)} · ${esc(c.serie||'—')}</p><div style="margin:8px 0">${statusPill(c.statusDossie)}</div><div class="side-list"><div class="side-item"><label>Etapa atual</label><div>${esc(c.etapaAtual)}</div></div><div class="side-item"><label>Próxima pendência</label><div>${esc(c.proximaPendencia)}</div></div><div class="side-item"><label>Prazo relevante</label><div>${esc(prazo)}${c.prazoDias!=null?` · ${esc(c.prazoDias)} dia(s)`:''}</div></div><div class="side-item"><label>Etapas</label><div>${esc(c.etapas)} total · ${esc(c.etapasFinalizadas)} finalizada(s) · ${esc(c.etapasAbertas)} pendente(s)</div></div></div></div>${aberto?`<div class="flow-wrap" style="margin-top:16px">${renderFluxoCasoHtml(c.rows)}</div>`:''}</div>`; }
 function renderDossie(){ const club=$('clubSelect').value || uniqueValues('clube')[0]; const cases=dossieCaseMetrics(club); const cards=[{key:'todos',value:cases.length,label:'Total de casos',sub:club,color:'var(--text)'},{key:'andamento',value:cases.filter(dossieCasoEmAndamento).length,label:'Em andamento',sub:'Casos abertos',color:'var(--blue)'},{key:'finalizados',value:cases.filter(dossieCasoFinalizado).length,label:'Finalizados',sub:'Casos encerrados',color:'var(--green)'}]; $('dossieKpis').innerHTML=cards.map(dossieKpiCard).join(''); const visible=filtraCasosDossie(cases); if(dossieCasoAberto&&!visible.some(c=>c.root===dossieCasoAberto)) dossieCasoAberto=''; renderDossieQuickFilter(); $('dossieCount').textContent=`${visible.length} caso(s)`; $('clubTimeline').innerHTML=visible.map(dossieCaseCard).join('')||'<div class="empty"><p>Sem casos para o clube selecionado.</p></div>'; }
-function laneName(r){ const t=normalizarTexto([r.etapa,r.objeto].join(' ')); if(t.includes('dilig')) return 'Diligência'; if(t.includes('parecer tecnico conclusivo')) return 'Parecer Técnico Conclusivo'; if(t.includes('parecer tecnico')) return 'Parecer Técnico'; if(t.includes('auto de infracao')&&t.includes('pso')) return 'Auto de Infração PSO'; if(t.includes('auto de infracao')&&t.includes('pss')) return 'Auto de Infração PSS'; if(t.includes('auto de infracao')) return 'Auto de Infração'; if(t.includes('defesa')||t.includes('entrega')) return 'Defesa/Entrega'; if(t.includes('acord')&&t.includes('pso')) return 'Acórdão PSO'; if(t.includes('acord')&&t.includes('pss')) return 'Acórdão PSS'; if(t.includes('acord')) return 'Acórdão'; if(t.includes('reconsider')||t.includes('recurso')) return 'Reconsideração/Recurso'; return 'Acompanhamento'; }
+function laneName(r){ const t=normalizarTexto([r.etapa,r.objeto].join(' ')); if(t.includes('dilig')) return 'Diligência'; if(t.includes('parecer tecnico conclusivo')) return 'Parecer Técnico Conclusivo'; if(t.includes('parecer tecnico')) return 'Parecer Técnico'; if(t.includes('auto de infracao')&&t.includes('pso')) return 'Auto de Infração PSO'; if(t.includes('auto de infracao')&&t.includes('pss')) return 'Auto de Infração PSS'; if(t.includes('auto de infracao')) return 'Auto de Infração'; if(t.includes('defesa')||t.includes('entrega')) return 'Defesa/Entrega'; if(t.includes('acord')&&t.includes('decisao da presidencia')&&t.includes('pss')) return 'Acórdão Decisão da Presidência PSS'; if(t.includes('acord')&&t.includes('pso')) return 'Acórdão PSO'; if(t.includes('acord')&&t.includes('pss')) return 'Acórdão PSS'; if(t.includes('acord')) return 'Acórdão'; if(t.includes('reconsider')||t.includes('recurso')) return 'Reconsideração/Recurso'; return 'Acompanhamento'; }
 function resetEsteiraFilters(){ if($('showPendingAnresfEsteira')) $('showPendingAnresfEsteira').checked=true; if($('showPendingClubeEsteira')) $('showPendingClubeEsteira').checked=true; if($('showFinishedEsteira')) $('showFinishedEsteira').checked=false; }
 function statusEsteiraSelecionados(){ const selected=new Set(); if($('showPendingAnresfEsteira')?.checked) selected.add('pendente anresf'); if($('showPendingClubeEsteira')?.checked) selected.add('pendente clube'); if($('showFinishedEsteira')?.checked) selected.add('finalizado'); return selected; }
-function renderEsteira(){ const preferred=['Diligência','Parecer Técnico','Auto de Infração - PSS','Auto de Infração - PSO','Parecer Técnico Conclusivo','Acórdão - PSS','Acórdão - PSO','Acompanhamento']; const statusSelecionados=statusEsteiraSelecionados(); const rows=DATA.filter(r=>String(r.etapa||'').trim() && statusSelecionados.has(normalizarTexto(r.statusEtapa))); const grouped=groupBy(rows,r=>String(r.etapa||'').trim()); const cols=Object.keys(grouped).sort((a,b)=>{ const ai=preferred.indexOf(a); const bi=preferred.indexOf(b); if(ai!==-1||bi!==-1) return (ai===-1?999:ai)-(bi===-1?999:bi); return a.localeCompare(b,'pt-BR'); }); $('kanbanBoard').innerHTML=cols.map(c=>`<div class="kanban-col"><div class="kanban-title">${esc(c)} · ${(grouped[c]||[]).length}</div>${(grouped[c]||[]).sort((a,b)=>(daysRemaining(a)??9999)-(daysRemaining(b)??9999)).map(r=>`<div class="kanban-card" onclick="openDetail(${r.row})"><strong>Caso ${esc(r.caso)} · ${esc(r.clube)}</strong><p class="muted">${esc(r.id||'Sem ID')} · ${esc(r.origem)}</p><p>Prazo: ${esc(r.prazoFinal||'—')}</p>${statusPill(r.statusEtapa)}${r.sancao?`<div class="sancao">${esc(r.sancao)}</div>`:''}</div>`).join('')}</div>`).join('')||'<div class="empty"><p>Nenhuma etapa operacional encontrada.</p></div>'; }
+function renderEsteira(){ const preferred=['Diligência','Parecer Técnico','Auto de Infração - PSS','Auto de Infração - PSO','Parecer Técnico Conclusivo','Acórdão - PSS','Acórdão Decisão da Presidência - PSS','Acórdão - PSO','Acompanhamento']; const statusSelecionados=statusEsteiraSelecionados(); const rows=DATA.filter(r=>String(r.etapa||'').trim() && statusSelecionados.has(normalizarTexto(r.statusEtapa))); const grouped=groupBy(rows,r=>String(r.etapa||'').trim()); const cols=Object.keys(grouped).sort((a,b)=>{ const ai=preferred.indexOf(a); const bi=preferred.indexOf(b); if(ai!==-1||bi!==-1) return (ai===-1?999:ai)-(bi===-1?999:bi); return a.localeCompare(b,'pt-BR'); }); $('kanbanBoard').innerHTML=cols.map(c=>`<div class="kanban-col"><div class="kanban-title">${esc(c)} · ${(grouped[c]||[]).length}</div>${(grouped[c]||[]).sort((a,b)=>(daysRemaining(a)??9999)-(daysRemaining(b)??9999)).map(r=>`<div class="kanban-card" onclick="openDetail(${r.row})"><strong>Caso ${esc(r.caso)} · ${esc(r.clube)}</strong><p class="muted">${esc(r.id||'Sem ID')} · ${esc(r.origem)}</p><p>Prazo: ${esc(r.prazoFinal||'—')}</p>${statusPill(r.statusEtapa)}${r.sancao?`<div class="sancao">${esc(r.sancao)}</div>`:''}</div>`).join('')}</div>`).join('')||'<div class="empty"><p>Nenhuma etapa operacional encontrada.</p></div>'; }
 
-const tiposIdsOrdem=['Diligência','Parecer Técnico Conclusivo','Auto de Infração - PSS','Auto de Infração - PSO','Acórdão - PSS','Acórdão - PSO','Acórdão','Outros'];
-function classificarTipoId(etapa){ const t=normalizarTexto(etapa); if(t.includes('diligencia')) return 'Diligência'; if(t.includes('parecer tecnico conclusivo')) return 'Parecer Técnico Conclusivo'; if(t.includes('auto de infracao')&&t.includes('pss')) return 'Auto de Infração - PSS'; if(t.includes('auto de infracao')&&t.includes('pso')) return 'Auto de Infração - PSO'; if(t.includes('decisao da presidencia')&&t.includes('pss')) return 'Decisão da Presidência - PSS'; if(t.includes('decisao da presidencia')&&t.includes('pso')) return 'Decisão da Presidência - PSO'; if(t.includes('decisao da presidencia')) return 'Decisão da Presidência'; if(t.includes('acordao')&&t.includes('pss')) return 'Acórdão - PSS'; if(t.includes('acordao')&&t.includes('pso')) return 'Acórdão - PSO'; if(t.includes('acordao')) return 'Acórdão'; return ''; }
+const tiposIdsOrdem=['Diligência','Parecer Técnico Conclusivo','Auto de Infração - PSS','Auto de Infração - PSO','Acórdão - PSS','Acórdão Decisão da Presidência - PSS','Decisão da Presidência - PSS','Acórdão - PSO','Decisão da Presidência - PSO','Acórdão','Decisão da Presidência','Outros'];
+function classificarTipoId(etapa){ const t=normalizarTexto(etapa); if(t.includes('diligencia')) return 'Diligência'; if(t.includes('parecer tecnico conclusivo')) return 'Parecer Técnico Conclusivo'; if(t.includes('auto de infracao')&&t.includes('pss')) return 'Auto de Infração - PSS'; if(t.includes('auto de infracao')&&t.includes('pso')) return 'Auto de Infração - PSO'; if(t.includes('acordao')&&t.includes('decisao da presidencia')&&t.includes('pss')) return 'Acórdão Decisão da Presidência - PSS'; if(t.includes('acordao')&&t.includes('pss')) return 'Acórdão - PSS'; if(t.includes('acordao')&&t.includes('pso')) return 'Acórdão - PSO'; if(t.includes('acordao')) return 'Acórdão'; if(t.includes('decisao da presidencia')&&t.includes('pss')) return 'Decisão da Presidência - PSS'; if(t.includes('decisao da presidencia')&&t.includes('pso')) return 'Decisão da Presidência - PSO'; if(t.includes('decisao da presidencia')) return 'Decisão da Presidência'; return ''; }
 function etapaDeveTerId(r){ return !!classificarTipoId(r.etapa); }
 function parseIdDocumento(id){ const m=String(id||'').trim().match(/^(\d{1,})\/(\d{4})$/); return m?{numero:Number(m[1]),ano:Number(m[2]),id:`${String(Number(m[1])).padStart(3,'0')}/${m[2]}`}:null; }
 function ultimoAnoIds(){ const anos=DATA.map(r=>parseIdDocumento(r.id)?.ano).filter(Boolean); return anos.length?Math.max(...anos):new Date().getFullYear(); }
@@ -3013,19 +3013,24 @@ function proximoId(numero,ano){ return `${String((numero||0)+1).padStart(3,'0')}
 function registrosControleIds(){ const ano=ultimoAnoIds(); const classificados=DATA.map(r=>({row:r,tipo:classificarTipoId(r.etapa),parsed:parseIdDocumento(r.id)})).filter(x=>x.tipo||x.parsed); const porTipo=Object.fromEntries(tiposIdsOrdem.map(t=>[t,[]])); classificados.forEach(x=>{ const tipo=x.tipo || 'Outros'; if(x.parsed) porTipo[tipo].push(x); }); return tiposIdsOrdem.map(tipo=>{ const itensAno=(porTipo[tipo]||[]).filter(x=>x.parsed?.ano===ano).sort((a,b)=>a.parsed.numero-b.parsed.numero||a.row.row-b.row.row); const ultimo=itensAno[itensAno.length-1]; const maior=ultimo?.parsed?.numero||0; return {tipo,ano,ultimo,ultimoId:ultimo?ultimo.parsed.id:'—',proximo:proximoId(maior,ano)}; }); }
 function idsKpiCard(titulo,linha){ return `<div class="kpi" style="--kpi:var(--gold)"><div class="kpi-value" style="font-size:26px">${esc(linha?.ultimoId||'—')}</div><div class="kpi-label">${esc(titulo)}</div><div class="kpi-sub">Próximo: <strong>${esc(linha?.proximo||'—')}</strong></div></div>`; }
 function copiarIdSugerido(id){ navigator.clipboard?.writeText(id); alert(`ID sugerido copiado: ${id}`); }
-function renderControleIds(){ if(!$('idsTable')) return; const linhas=registrosControleIds(); const byTipo=Object.fromEntries(linhas.map(l=>[l.tipo,l])); const cards=[['Último Auto PSS',byTipo['Auto de Infração - PSS']],['Último Auto PSO',byTipo['Auto de Infração - PSO']],['Último Acórdão PSS',byTipo['Acórdão - PSS']],['Último Acórdão PSO',byTipo['Acórdão - PSO']],['Última Diligência',byTipo['Diligência']]]; $('idsKpis').innerHTML=cards.map(([t,l])=>idsKpiCard(t,l)).join(''); const q=normalizarTexto($('idsSearch')?.value||''); const visiveis=linhas.filter(l=>{ const r=l.ultimo?.row; return !q||normalizarTexto([l.tipo,l.ultimoId,l.proximo,r?.caso,r?.clube,r?.serie,r?.origem,r?.dataEnvio,r?.etapa].join(' ')).includes(q); }); $('idsTable').innerHTML=`<div class="table-wrap"><table class="tbl clickable"><thead><tr><th>Tipo</th><th>Último ID utilizado</th><th>Próximo ID sugerido</th><th>Último caso</th><th>Clube</th><th>Série</th><th>Origem</th><th>Data de envio</th><th>Etapa</th><th>Documento</th></tr></thead><tbody>${visiveis.map(l=>{ const r=l.ultimo?.row; const doc=r?.doc?`<a class="doc-link" target="_blank" rel="noopener" href="${esc(r.doc)}" onclick="event.stopPropagation()">Abrir</a>`:'<span class="muted">—</span>'; return `<tr ${r?`onclick="openDetail(${r.row})"`:''}><td><strong>${esc(l.tipo)}</strong></td><td>${esc(l.ultimoId)}</td><td><button class="btn mini" onclick="event.stopPropagation();copiarIdSugerido('${esc(l.proximo)}')">Copiar ${esc(l.proximo)}</button></td><td>${r?`Caso ${esc(r.caso)}`:'—'}</td><td>${esc(r?.clube||'—')}</td><td>${esc(r?.serie||'—')}</td><td>${esc(r?.origem||'—')}</td><td>${esc(r?.dataEnvio||'—')}</td><td>${esc(r?.etapa||'—')}</td><td>${doc}</td></tr>`; }).join('')||'<tr><td colspan="10"><div class="empty"><p>Nenhum tipo encontrado para a busca.</p></div></td></tr>'}</tbody></table></div>`; renderAlertasIds(linhas); }
+function renderControleIds(){ if(!$('idsTable')) return; const linhas=registrosControleIds(); const byTipo=Object.fromEntries(linhas.map(l=>[l.tipo,l])); const cards=[['Último Auto PSS',byTipo['Auto de Infração - PSS']],['Último Auto PSO',byTipo['Auto de Infração - PSO']],['Último Acórdão PSS',byTipo['Acórdão - PSS']],['Último Acórdão Presidência',byTipo['Acórdão Decisão da Presidência - PSS']],['Último Acórdão PSO',byTipo['Acórdão - PSO']],['Última Diligência',byTipo['Diligência']]]; $('idsKpis').innerHTML=cards.map(([t,l])=>idsKpiCard(t,l)).join(''); const q=normalizarTexto($('idsSearch')?.value||''); const visiveis=linhas.filter(l=>{ const r=l.ultimo?.row; return !q||normalizarTexto([l.tipo,l.ultimoId,l.proximo,r?.caso,r?.clube,r?.serie,r?.origem,r?.dataEnvio,r?.etapa].join(' ')).includes(q); }); $('idsTable').innerHTML=`<div class="table-wrap"><table class="tbl clickable"><thead><tr><th>Tipo</th><th>Último ID utilizado</th><th>Próximo ID sugerido</th><th>Último caso</th><th>Clube</th><th>Série</th><th>Origem</th><th>Data de envio</th><th>Etapa</th><th>Documento</th></tr></thead><tbody>${visiveis.map(l=>{ const r=l.ultimo?.row; const doc=r?.doc?`<a class="doc-link" target="_blank" rel="noopener" href="${esc(r.doc)}" onclick="event.stopPropagation()">Abrir</a>`:'<span class="muted">—</span>'; return `<tr ${r?`onclick="openDetail(${r.row})"`:''}><td><strong>${esc(l.tipo)}</strong></td><td>${esc(l.ultimoId)}</td><td><button class="btn mini" onclick="event.stopPropagation();copiarIdSugerido('${esc(l.proximo)}')">Copiar ${esc(l.proximo)}</button></td><td>${r?`Caso ${esc(r.caso)}`:'—'}</td><td>${esc(r?.clube||'—')}</td><td>${esc(r?.serie||'—')}</td><td>${esc(r?.origem||'—')}</td><td>${esc(r?.dataEnvio||'—')}</td><td>${esc(r?.etapa||'—')}</td><td>${doc}</td></tr>`; }).join('')||'<tr><td colspan="10"><div class="empty"><p>Nenhum tipo encontrado para a busca.</p></div></td></tr>'}</tbody></table></div>`; renderAlertasIds(linhas); }
 function renderAlertasIds(linhas){ const alertas=[]; const classificados=DATA.map(r=>({row:r,tipo:classificarTipoId(r.etapa),parsed:parseIdDocumento(r.id)})); tiposIdsOrdem.forEach(tipo=>{ const ids=(classificados.filter(x=>(x.tipo||'Outros')===tipo&&x.parsed)); const porId=groupBy(ids,x=>x.parsed.id); Object.entries(porId).filter(([,items])=>items.length>1).forEach(([id,items])=>alertas.push({tipo:'ID duplicado',texto:`${tipo}: ${id} aparece ${items.length} vezes (${items.map(x=>'Caso '+x.row.caso).join(', ')})`})); const porAno=groupBy(ids,x=>x.parsed.ano); Object.entries(porAno).forEach(([ano,items])=>{ const nums=[...new Set(items.map(x=>x.parsed.numero))].sort((a,b)=>a-b); if(nums.length>1){ for(let n=nums[0]; n<=nums[nums.length-1]; n++){ if(!nums.includes(n)) alertas.push({tipo:'Possível salto',texto:`${tipo} ${ano}: possível ID ausente ${String(n).padStart(3,'0')}/${ano}`}); } } }); }); classificados.filter(x=>x.tipo&&!x.row.id).forEach(x=>alertas.push({tipo:'ID ausente',texto:`${x.tipo}: Caso ${x.row.caso} · ${x.row.clube} · ${x.row.etapa}`})); $('idsAlerts').innerHTML=alertas.length?`<div class="timeline-list">${alertas.map(a=>`<div class="timeline-item"><strong>${esc(a.tipo)}</strong><p class="muted" style="margin:6px 0 0">${esc(a.texto)}</p></div>`).join('')}</div>`:'<div class="empty"><p>Nenhum alerta de numeração identificado.</p></div>'; }
 
 function sanctionRows(){ return DATA.filter(r=>normalizarTexto(r.etapa).includes('acordao') && normalizarTexto(r.statusEtapa)==='finalizado'); }
+function turmaSancao(r){ const turma=String(r.turma||'').trim(); if(turma) return turma; const texto=normalizarTexto([r.etapa,r.objeto,r.observacao].join(' ')); if(texto.includes('presidencia')) return 'Presidência'; if(texto.includes('turma 01')||texto.includes('julgamento 01')) return 'Turma 01'; if(texto.includes('turma 02')||texto.includes('julgamento 02')) return 'Turma 02'; return 'Sem turma'; }
 function hasTerm(r,t){ return normalizarTexto(r.sancao).includes(normalizarTexto(t)); }
+function hasSemSancao(r){ const s=normalizarTexto(r.sancao); return !s || s==='sem sancao'; }
 function hasExclusaoParfb(r){ return /exclusao\s+parf\s*-?\s*b/.test(normalizarTexto(r.sancao)); }
 function hasNovaInfracao(r){ return normalizarTexto(r.sancao).includes('nova infracao'); }
-const sancoesCardLabels={advertencias:'Advertências',multas:'Multas',exclusoes:'Exclusões PARF-B',novaInfracao:'Nova Infração',pss:'Total PSS',pso:'Total PSO'};
-function filtraSancoesPorCard(rows){ if(!filtroSancoesAtivo) return rows; return rows.filter(r=>{ if(filtroSancoesAtivo==='advertencias') return hasTerm(r,'Advertência'); if(filtroSancoesAtivo==='multas') return hasTerm(r,'Multa'); if(filtroSancoesAtivo==='exclusoes') return hasExclusaoParfb(r); if(filtroSancoesAtivo==='novaInfracao') return hasNovaInfracao(r); if(filtroSancoesAtivo==='pss') return normalizarTexto(r.etapa).includes('pss'); if(filtroSancoesAtivo==='pso') return normalizarTexto(r.etapa).includes('pso'); return true; }); }
+const sancoesCardLabels={advertencias:'Advertências',multas:'Multas',semSancao:'Sem sanção',exclusoes:'Exclusões PARF-B',novaInfracao:'Nova Infração',pss:'Total PSS',pso:'Total PSO'};
+function filtraSancoesPorCard(rows){ if(!filtroSancoesAtivo) return rows; return rows.filter(r=>{ if(filtroSancoesAtivo==='advertencias') return hasTerm(r,'Advertência'); if(filtroSancoesAtivo==='multas') return hasTerm(r,'Multa'); if(filtroSancoesAtivo==='semSancao') return hasSemSancao(r); if(filtroSancoesAtivo==='exclusoes') return hasExclusaoParfb(r); if(filtroSancoesAtivo==='novaInfracao') return hasNovaInfracao(r); if(filtroSancoesAtivo==='pss') return normalizarTexto(r.etapa).includes('pss'); if(filtroSancoesAtivo==='pso') return normalizarTexto(r.etapa).includes('pso'); return true; }); }
 function sancoesKpiCard(k){ return `<button type="button" class="kpi clickable ${filtroSancoesAtivo===k.key?'active':''}" style="--kpi:${k.color}" onclick="toggleFiltroSancoes('${k.key}')"><div class="kpi-value">${esc(k.value)}</div><div class="kpi-label">${esc(k.label)}</div><div class="kpi-sub">${esc(k.sub||'')}</div></button>`; }
 function toggleFiltroSancoes(key){ filtroSancoesAtivo = filtroSancoesAtivo===key ? '' : key; renderSancoes(); }
-function renderSancoesQuickFilter(){ const el=$('riskQuickFilter'); if(!el) return; if(!filtroSancoesAtivo){ el.classList.remove('active'); el.innerHTML=''; return; } el.classList.add('active'); el.innerHTML=`<span>Filtro ativo: ${esc(sancoesCardLabels[filtroSancoesAtivo]||filtroSancoesAtivo)}</span><button class="btn mini" onclick="toggleFiltroSancoes('${filtroSancoesAtivo}')">Remover</button>`; }
-function renderSancoes(){ const base=sanctionRows(); const cards=[{key:'advertencias',value:base.filter(r=>hasTerm(r,'Advertência')).length,label:'Advertências',sub:'Clique para filtrar',color:'var(--gold)'},{key:'multas',value:base.filter(r=>hasTerm(r,'Multa')).length,label:'Multas',sub:'Clique para filtrar',color:'var(--red)'},{key:'exclusoes',value:base.filter(hasExclusaoParfb).length,label:'Exclusões PARF-B',sub:'Clique para filtrar',color:'var(--purple)'},{key:'novaInfracao',value:base.filter(hasNovaInfracao).length,label:'Nova infração',sub:'Clique para filtrar',color:'var(--orange)'},{key:'pss',value:base.filter(r=>normalizarTexto(r.etapa).includes('pss')).length,label:'Total PSS',sub:'Clique para filtrar',color:'var(--blue)'},{key:'pso',value:base.filter(r=>normalizarTexto(r.etapa).includes('pso')).length,label:'Total PSO',sub:'Clique para filtrar',color:'var(--green)'}]; const rows=filtraSancoesPorCard(base); $('riskKpis').innerHTML=cards.map(sancoesKpiCard).join(''); renderSancoesQuickFilter(); renderBar('riskByClub',Object.entries(groupBy(rows,r=>r.clube)).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--red)',20); renderBar('riskByOrigin',Object.entries(groupBy(rows,r=>r.origem)).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--purple)',20); renderBar('riskBySerie',Object.entries(groupBy(rows,r=>r.serie||'Sem série')).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--gold)',20); }
+function turmaFiltroSancoes(){ return $('sanctionTurmaFilter')?.value || ''; }
+function popularFiltroTurmaSancoes(base){ const select=$('sanctionTurmaFilter'); if(!select) return; const atual=select.value; const turmas=[...new Set(base.map(turmaSancao).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR')); select.innerHTML='<option value="">Todas</option>'+turmas.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join(''); if(turmas.includes(atual)) select.value=atual; }
+function filtraSancoesPorTurma(rows){ const turma=turmaFiltroSancoes(); return turma ? rows.filter(r=>turmaSancao(r)===turma) : rows; }
+function renderSancoesQuickFilter(){ const el=$('riskQuickFilter'); if(!el) return; const filtros=[]; if(filtroSancoesAtivo) filtros.push(`tipo ${sancoesCardLabels[filtroSancoesAtivo]||filtroSancoesAtivo}`); if(turmaFiltroSancoes()) filtros.push(`órgão ${turmaFiltroSancoes()}`); if(!filtros.length){ el.classList.remove('active'); el.innerHTML=''; return; } el.classList.add('active'); el.innerHTML=`<span>Filtro ativo: ${esc(filtros.join(' · '))}</span><button class="btn mini" onclick="filtroSancoesAtivo=''; if($('sanctionTurmaFilter')) $('sanctionTurmaFilter').value=''; renderSancoes();">Remover</button>`; }
+function renderSancoes(){ const base=sanctionRows(); popularFiltroTurmaSancoes(base); const baseTurma=filtraSancoesPorTurma(base); const cards=[{key:'advertencias',value:baseTurma.filter(r=>hasTerm(r,'Advertência')).length,label:'Advertências',sub:'Clique para filtrar',color:'var(--gold)'},{key:'multas',value:baseTurma.filter(r=>hasTerm(r,'Multa')).length,label:'Multas',sub:'Clique para filtrar',color:'var(--red)'},{key:'semSancao',value:baseTurma.filter(hasSemSancao).length,label:'Sem sanção',sub:'Clique para filtrar',color:'var(--text)'},{key:'exclusoes',value:baseTurma.filter(hasExclusaoParfb).length,label:'Exclusões PARF-B',sub:'Clique para filtrar',color:'var(--purple)'},{key:'novaInfracao',value:baseTurma.filter(hasNovaInfracao).length,label:'Nova infração',sub:'Clique para filtrar',color:'var(--orange)'},{key:'pss',value:baseTurma.filter(r=>normalizarTexto(r.etapa).includes('pss')).length,label:'Total PSS',sub:'Clique para filtrar',color:'var(--blue)'},{key:'pso',value:baseTurma.filter(r=>normalizarTexto(r.etapa).includes('pso')).length,label:'Total PSO',sub:'Clique para filtrar',color:'var(--green)'}]; const rows=filtraSancoesPorCard(baseTurma); $('riskKpis').innerHTML=cards.map(sancoesKpiCard).join(''); renderSancoesQuickFilter(); renderBar('riskByClub',Object.entries(groupBy(rows,r=>r.clube)).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--red)',20); renderBar('riskByOrigin',Object.entries(groupBy(rows,r=>r.origem)).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--purple)',20); renderBar('riskBySerie',Object.entries(groupBy(rows,r=>r.serie||'Sem série')).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--gold)',20); renderBar('riskByTurma',Object.entries(groupBy(rows,turmaSancao)).map(([label,items])=>({label,value:items.length})).sort((a,b)=>b.value-a.value),'var(--blue)',20); }
 function init(){ setupAuth(); $('todayDate').textContent=new Date().toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short',year:'numeric'}); populateSelectors(); populateClubSelect(); renderFlow(); renderMacro(); renderPrazos(); renderDossie(); renderEsteira(); renderSancoes(); renderControleIds(); }
 init();
 </script>
