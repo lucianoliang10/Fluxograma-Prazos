@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="panel" id="panel-prazos">
-        <div class="hero"><div><div class="pill orange">Prazos críticos</div><h1>Painel de prazos críticos</h1><p>Classificação automática por vencidos, vencendo hoje, próximos 3 dias, próximos 7 dias e prazos futuros.</p></div></div>
+        <div class="hero"><div><div class="pill orange">Prazos críticos</div><h1>Painel de prazos críticos</h1><p>Classificação automática por vencidos, vencendo hoje, próximos 3 dias, próximos 7 dias e prazos futuros, considerando apenas casos e etapas não finalizados.</p></div></div>
         <div class="op-grid" id="deadlineGroups"></div>
       </div>
       <div class="panel" id="panel-dossie">
@@ -3456,6 +3456,7 @@ const DATA = [
   }
 ];
 
+
 const $ = id => document.getElementById(id);
 function unlockApp(){ document.body.classList.remove('auth-locked'); document.body.classList.add('auth-unlocked'); }
 function setupAuth(){
@@ -3546,7 +3547,8 @@ function normalizarTexto(valor){ return String(valor ?? '').trim().replace(/\s+/
 function todayStart(){ const d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
 function parseDataBR(valor){ const v=String(valor ?? '').trim(); const m=v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/); if(!m) return null; const year=m[3].length===2 ? 2000+Number(m[3]) : Number(m[3]); const d=new Date(year,Number(m[2])-1,Number(m[1])); return d.getFullYear()===year && d.getMonth()===Number(m[2])-1 && d.getDate()===Number(m[1]) ? d : null; }
 function isEtapaFinalizada(registro){ return normalizarTexto(registro?.statusEtapa)==='finalizado'; }
-function isRegistroOperacional(registro){ return !isEtapaFinalizada(registro); }
+function isCasoFinalizado(registro){ return normalizarTexto(registro?.statusCaso)==='finalizado'; }
+function isRegistroOperacional(registro){ return !isEtapaFinalizada(registro) && !isCasoFinalizado(registro); }
 function getDiasRestantes(registro){ const prazo=parseDataBR(registro?.prazoFinal); return prazo ? Math.round((prazo-todayStart())/MS_DAY) : null; }
 function getSituacaoPrazo(registro){ if(isEtapaFinalizada(registro)) return 'Fora da visão operacional'; const dias=getDiasRestantes(registro); if(dias==null) return 'Sem prazo'; if(dias<0) return 'Vencido'; if(dias===0) return 'Vence hoje'; if(dias<=3) return 'Próximos 3 dias'; if(dias<=7) return 'Próximos 7 dias'; return 'Futuro'; }
 function diasRestantesTexto(registro){ const dias=getDiasRestantes(registro); if(dias==null) return 'Sem prazo'; if(dias<0) return `${Math.abs(dias)}d em atraso`; if(dias===0) return 'vence hoje'; return `faltam ${dias}d`; }
