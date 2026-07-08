@@ -42,7 +42,7 @@ FIELD_MAP = {
     "Data da decisão": "dataDecisao",
 }
 REQUIRED_COLUMNS = list(FIELD_MAP)
-DATA_RE = re.compile(r"const DATA = (\[.*?\n\]);", re.S)
+DATA_RE = re.compile(r"(?:const DATA|window\.DATA) = (\[.*?\n\]);", re.S)
 
 
 def normalize_newlines(text: str) -> str:
@@ -96,11 +96,11 @@ def build_data(records: list[dict[str, str]]) -> list[dict[str, object]]:
     return data
 
 
-def replace_data(html: str, data: list[dict[str, object]]) -> str:
-    replacement = "const DATA = " + json.dumps(data, ensure_ascii=False, indent=2) + ";"
-    if not DATA_RE.search(html):
-        raise SystemExit("Não encontrei `const DATA = [...]` em index.html.")
-    return DATA_RE.sub(replacement, html, count=1)
+def replace_data(text: str, data: list[dict[str, object]], *, global_name: str = "window.DATA") -> str:
+    replacement = global_name + " = " + json.dumps(data, ensure_ascii=False, indent=2) + ";"
+    if not DATA_RE.search(text):
+        raise SystemExit("Não encontrei `window.DATA = [...]` ou `const DATA = [...]` no arquivo de dados.")
+    return DATA_RE.sub(replacement, text, count=1)
 
 
 def replace_updated_at(html: str, updated_at: str | None) -> str:
@@ -115,19 +115,23 @@ def replace_updated_at(html: str, updated_at: str | None) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Atualiza o DATA do index.html a partir de um TSV.")
+    parser = argparse.ArgumentParser(description="Atualiza o window.DATA do data.js a partir de um TSV.")
     parser.add_argument("tsv", type=Path, help="Arquivo TSV exportado/colado da planilha.")
     parser.add_argument("--html", type=Path, default=Path("index.html"), help="Caminho do HTML a atualizar.")
+    parser.add_argument("--data-js", type=Path, default=Path("data.js"), help="Caminho do arquivo JavaScript com window.DATA.")
     parser.add_argument("--updated-at", help="Data exibida no topo, ex.: 08/07/2026.")
     args = parser.parse_args()
 
     records = read_tsv(args.tsv)
     data = build_data(records)
+    data_js = args.data_js.read_text(encoding="utf-8")
+    data_js = replace_data(data_js, data)
+    args.data_js.write_text(data_js, encoding="utf-8")
+
     html = args.html.read_text(encoding="utf-8")
-    html = replace_data(html, data)
     html = replace_updated_at(html, args.updated_at)
     args.html.write_text(html, encoding="utf-8")
-    print(f"Importados {len(data)} registros para {args.html}.")
+    print(f"Importados {len(data)} registros para {args.data_js}.")
 
 
 if __name__ == "__main__":

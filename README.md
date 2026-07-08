@@ -23,7 +23,7 @@ Quando houver alteração na planilha base, salve os dados colados/exportados em
 python3 tools/update_data_from_tsv.py dados.tsv --updated-at DD/MM/AAAA
 ```
 
-O importador substitui o array `DATA` dentro de `index.html`, remove cabeçalho duplicado colado no meio do TSV e preserva também as colunas operacionais (`Email responsável`, alertas e eventos) no JSON para evitar atualizações parciais.
+O importador substitui o array `window.DATA` dentro de `data.js`, remove cabeçalho duplicado colado no meio do TSV e preserva também as colunas operacionais (`Email responsável`, alertas e eventos) no JSON para evitar atualizações parciais. O `index.html` apenas carrega esse arquivo de dados, sem embutir o bloco completo da base.
 
 ## Senha de acesso
 
